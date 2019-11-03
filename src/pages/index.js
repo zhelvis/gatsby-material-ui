@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 
 import Button from "@material-ui/core/Button"
+import { DarkModeContext } from '../index'
 
 import Layout from "../components/layout"
 import Image from "../components/image"
@@ -13,9 +14,13 @@ const IndexPage = () => {
       <SEO title="Home" />
       <h1>Hi people</h1>
       <p>Welcome to your new Gatsby site.</p>
-      <Button variant="contained" color="primary">
-        Hi
-      </Button>
+      <DarkModeContext.Consumer>
+        {({ darkMode, toogleDarkMode }) => (
+          <Button onClick={toogleDarkMode} variant="contained" color="primary">
+            Test
+          </Button>
+        )}
+      </DarkModeContext.Consumer>
       <p>Now go build something great.</p>
       <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
         <Image />
