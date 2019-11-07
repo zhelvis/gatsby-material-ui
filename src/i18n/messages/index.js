@@ -1,8 +1,8 @@
 export default {
     "en": {
-        title: "Test"
+        title: "Hello world!"
     },
     "ru": {
-        title: "Тест"
+        title: "Привет мир!"
     }
 }
