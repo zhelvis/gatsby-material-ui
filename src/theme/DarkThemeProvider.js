@@ -1,13 +1,13 @@
-import React, { useMemo } from "react"
-import { CssBaseline } from "@material-ui/core"
-import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles"
+import React, { useMemo } from 'react'
+import { CssBaseline } from '@material-ui/core'
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 
-import DarkModeContext from "./darkModeContext"
-import themes from "./themes"
-import usePersistedState from "../hooks/usePersistedState"
+import DarkModeContext from './darkModeContext'
+import themes from './themes'
+import usePersistedState from '../hooks/usePersistedState'
 
 export default ({ children }) => {
-  const [darkMode, setDarkMode] = usePersistedState("darkMode", false)
+  const [darkMode, setDarkMode] = usePersistedState('darkMode', false)
 
   const toogleDarkMode = () => setDarkMode(!darkMode)
 

@@ -1,7 +1,7 @@
-import React, { useContext } from "react"
-import Button from "@material-ui/core/Button"
+import React, { useContext } from 'react'
+import Button from '@material-ui/core/Button'
 
-import DarkModeContext from "../theme/darkModeContext"
+import DarkModeContext from '../theme/darkModeContext'
 
 export default () => {
   const { toogleDarkMode } = useContext(DarkModeContext)

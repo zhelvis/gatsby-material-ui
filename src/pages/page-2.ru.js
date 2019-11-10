@@ -1,8 +1,8 @@
-import React from "react"
-import LanguageLink from "../components/languageLink"
+import React from 'react'
+import LanguageLink from '../components/languageLink'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from '../components/layout'
+import SEO from '../components/seo'
 
 const SecondPage = () => (
   <Layout>

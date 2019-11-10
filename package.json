@@ -22,10 +22,13 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
-    "react-intl": "^3.4.0"
+    "react-intl": "^3.4.0",
+    "react-transition-group": "^4.3.0"
   },
   "devDependencies": {
-    "prettier": "^1.18.2"
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.2",
+    "prettier": "^1.19.1"
   },
   "keywords": [
     "gatsby"
@@ -37,7 +40,8 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "prettier": "prettier --write ./\\*\\*/*.{js,css,mdx,json}"
   },
   "repository": {
     "type": "git",
@@ -45,5 +49,16 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

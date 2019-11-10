@@ -1,7 +1,7 @@
 export default {
   dark: {
     palette: {
-      type: "dark",
+      type: 'dark',
     },
   },
   light: {},

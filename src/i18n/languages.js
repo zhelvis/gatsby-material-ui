@@ -1,2 +1,2 @@
-export const langs = ["en", "ru"]
-export const defaultLangKey = "en"
+export const langs = ['en', 'ru']
+export const defaultLangKey = 'en'
