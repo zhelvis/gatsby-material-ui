@@ -1,12 +1,12 @@
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
+import PropTypes from 'prop-types'
+import { LocalizedLink } from 'gatsby-theme-i18n'
 import { AppBar, Toolbar, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
-import LangSwitcher from './languageSwitcher'
 import ThemeSwitcher from './themeSwitcher'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
@@ -16,22 +16,34 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Header = () => {
+const Header = ({ path }) => {
   const classes = useStyles()
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            <FormattedMessage id="title" />
+            Gatsby MUI starter
           </Typography>
-          <LangSwitcher locale="ru">ru</LangSwitcher>
-          <LangSwitcher locale="en">en</LangSwitcher>
+          <LocalizedLink to={path} language="ru">
+            ru
+          </LocalizedLink>
+          <LocalizedLink to={path} language="en">
+            en
+          </LocalizedLink>
           <ThemeSwitcher />
         </Toolbar>
       </AppBar>
     </div>
   )
+}
+
+Header.defaultProps = {
+  path: '/',
+}
+
+Header.propTypes = {
+  path: PropTypes.string,
 }
 
 export default Header

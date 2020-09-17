@@ -1,15 +1,20 @@
 import React from 'react'
-import LanguageLink from '../components/languageLink'
+import { useTranslation } from 'react-i18next'
+import { LocalizedLink } from 'gatsby-theme-i18n'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-const SecondPage = () => (
-  <Layout>
-    <SEO title="Page two" />
-    <h1>Hi from the second page</h1>
-    <LanguageLink to="/">Go back to the homepage</LanguageLink>
-  </Layout>
-)
+const SecondPage = () => {
+  const { t } = useTranslation('page2')
+
+  return (
+    <Layout path="/page-2/">
+      <SEO title={t('title')} description={t('description')} />
+      <h1>{t('hello')}</h1>
+      <LocalizedLink to="/">{t('link')}</LocalizedLink>
+    </Layout>
+  )
+}
 
 export default SecondPage

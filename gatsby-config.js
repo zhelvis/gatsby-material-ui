@@ -1,8 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
+    title: `Gatsby MUI Starter`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
+    siteUrl: 'http://example.com',
   },
   plugins: [
     `gatsby-plugin-material-ui`,
@@ -12,6 +13,22 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-theme-i18n`,
+      options: {
+        defaultLang: `en`,
+        configPath: require.resolve(`./i18n/config.json`),
+      },
+    },
+    {
+      resolve: `gatsby-theme-i18n-react-i18next`,
+      options: {
+        locales: `./i18n/react-i18next`,
+        i18nextOptions: {
+          ns: ['index', '404', 'page2'],
+        },
       },
     },
     `gatsby-transformer-sharp`,
@@ -27,14 +44,6 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
-    },
-    {
-      resolve: 'gatsby-plugin-i18n',
-      options: {        
-        langKeyDefault: 'en',
-        useLangKeyLayout: false,
-        prefixDefault: false,
-      }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

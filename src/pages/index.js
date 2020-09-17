@@ -1,19 +1,22 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
+import { LocalizedLink } from 'gatsby-theme-i18n'
 
 import Layout from '../components/layout'
 import Image from '../components/image'
 import SEO from '../components/seo'
-import LanguageLink from '../components/languageLink'
 
 const IndexPage = () => {
+  const { t } = useTranslation('index')
+
   return (
-    <Layout>
-      <SEO title="Home" />
-      <h1>Hello!</h1>
+    <Layout path="/">
+      <SEO title={t('title')} description={t('description')} />
+      <h1>{t('hello')}</h1>
       <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
         <Image />
       </div>
-      <LanguageLink to="/page-2/">Go to page 2</LanguageLink>
+      <LocalizedLink to="/page-2/">{t('link')}</LocalizedLink>
     </Layout>
   )
 }
