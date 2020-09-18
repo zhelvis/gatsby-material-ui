@@ -4,6 +4,7 @@ module.exports = {
     siteUrl: 'http://example.com',
   },
   plugins: [
+    'gatsby-plugin-material-ui-dark-mode',
     `gatsby-plugin-material-ui`,
     `gatsby-plugin-react-helmet`,
     {
@@ -11,6 +12,13 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/blog`,
+        name: `blog`,
       },
     },
     {
@@ -31,6 +39,24 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              quality: 100,
+              maxWidth: 768,
+              linkImagesToOriginal: false,
+            },
+          },
+        ],
+        defaultLayouts: {
+          default: require.resolve(`./src/components/layout.js`),
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
