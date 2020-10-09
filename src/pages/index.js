@@ -6,11 +6,11 @@ import Layout from '../components/layout'
 import Image from '../components/image'
 import SEO from '../components/seo'
 
-const IndexPage = () => {
+const IndexPage = ({ pageContext }) => {
   const { t } = useTranslation('index')
 
   return (
-    <Layout>
+    <Layout originalPath={pageContext.originalPath}>
       <SEO title={t('title')} description={t('description')} />
       <h1>{t('hello')}</h1>
       <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>

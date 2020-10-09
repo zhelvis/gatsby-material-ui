@@ -5,9 +5,9 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-const BlogTemplate = ({ data }) => {
+const BlogTemplate = ({ data, pageContext }) => {
   return (
-    <Layout>
+    <Layout originalPath={pageContext.originalPath}>
       <SEO
         title={data.mdx.frontmatter.title}
         description={data.mdx.frontmatter.description}

@@ -1,23 +1,19 @@
 import React from 'react'
-import { LocalizedLink } from 'gatsby-theme-i18n'
-import { useTranslation } from 'react-i18next'
 import {
   makeStyles,
   AppBar,
   Toolbar,
   IconButton,
   Drawer,
-  List,
-  ListItem,
-  ListItemText,
   Typography,
   Hidden,
-  Button,
 } from '@material-ui/core'
 
 import MenuIcon from '@material-ui/icons/Menu'
 
 import ThemeSwitcher from './themeSwitcher'
+import LanguageSwitcher from './languageSwitcher'
+import NavList from './navigation'
 
 const drawerWidth = '18em'
 
@@ -47,30 +43,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const ListItemLink = (props) => {
-  const { primary, to } = props
-
-  return (
-    <li>
-      <ListItem button component={LocalizedLink} to={to}>
-        <ListItemText primary={primary} />
-      </ListItem>
-    </li>
-  )
-}
-
-const NavList = () => {
-  const { t } = useTranslation('layout')
-  return (
-    <List>
-      <ListItemLink to="/" primary={t('home')} />
-      <ListItemLink to="/page-2" primary={t('second')} />
-      <ListItemLink to="/mdx" primary="Mdx page" />
-    </List>
-  )
-}
-
-const Layout = ({ children }) => {
+const Layout = ({ children, originalPath = '/' }) => {
   const classes = useStyles()
 
   const [open, setOpen] = React.useState(false)
@@ -92,25 +65,8 @@ const Layout = ({ children }) => {
           <Typography className={classes.title} variant="h6">
             Gatsby MUI Starter
           </Typography>
-          <Button
-            size="small"
-            color="inherit"
-            component={LocalizedLink}
-            to="/"
-            language="ru"
-          >
-            ru
-          </Button>
-          <Button
-            size="small"
-            color="inherit"
-            component={LocalizedLink}
-            to="/"
-            language="en"
-          >
-            en
-          </Button>
           <ThemeSwitcher />
+          <LanguageSwitcher originalPath={originalPath} />
         </Toolbar>
       </AppBar>
       <Hidden implementation="css" smDown>
