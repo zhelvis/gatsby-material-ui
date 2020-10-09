@@ -9,7 +9,7 @@ const SecondPage = () => {
   const { t } = useTranslation('page2')
 
   return (
-    <Layout path="/page-2/">
+    <Layout>
       <SEO title={t('title')} description={t('description')} />
       <h1>{t('hello')}</h1>
       <LocalizedLink to="/">{t('link')}</LocalizedLink>

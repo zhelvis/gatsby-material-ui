@@ -10,7 +10,7 @@ const IndexPage = () => {
   const { t } = useTranslation('index')
 
   return (
-    <Layout path="/">
+    <Layout>
       <SEO title={t('title')} description={t('description')} />
       <h1>{t('hello')}</h1>
       <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>

@@ -1,13 +1,14 @@
 import React, { useContext } from 'react'
-import Button from '@material-ui/core/Button'
+import { IconButton } from '@material-ui/core'
+import Brightness4 from '@material-ui/icons/Brightness4'
 
 import { DarkModeContext } from '../../plugins/gatsby-plugin-material-ui-dark-mode'
 
 export default () => {
   const { toogleDarkMode } = useContext(DarkModeContext)
   return (
-    <Button onClick={toogleDarkMode} variant="contained" color="primary">
-      Switch theme
-    </Button>
+    <IconButton onClick={toogleDarkMode} color="inherit">
+      <Brightness4 />
+    </IconButton>
   )
 }

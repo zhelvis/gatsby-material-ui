@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Typography } from '@material-ui/core'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
@@ -7,20 +7,16 @@ import SEO from '../components/seo'
 
 const BlogTemplate = ({ data }) => {
   return (
-    <Fragment>
+    <Layout>
       <SEO
         title={data.mdx.frontmatter.title}
         description={data.mdx.frontmatter.description}
       />
-      <Layout path={data.mdx.frontmatter.slug}>
-        <div>
-          <Typography variant="h2">{data.mdx.frontmatter.title}</Typography>
-          <div>
-            <MDXRenderer>{data.mdx.body}</MDXRenderer>
-          </div>
-        </div>
-      </Layout>
-    </Fragment>
+      <Typography variant="h2">{data.mdx.frontmatter.title}</Typography>
+      <div>
+        <MDXRenderer>{data.mdx.body}</MDXRenderer>
+      </div>
+    </Layout>
   )
 }
 

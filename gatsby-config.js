@@ -4,7 +4,7 @@ module.exports = {
     siteUrl: 'http://example.com',
   },
   plugins: [
-    'gatsby-plugin-material-ui-dark-mode',
+    `gatsby-plugin-material-ui-dark-mode`,
     `gatsby-plugin-material-ui`,
     `gatsby-plugin-react-helmet`,
     {
@@ -33,7 +33,7 @@ module.exports = {
       options: {
         locales: `./i18n/react-i18next`,
         i18nextOptions: {
-          ns: ['index', '404', 'page2'],
+          ns: ['index', 'layout', '404', 'page2'],
         },
       },
     },
