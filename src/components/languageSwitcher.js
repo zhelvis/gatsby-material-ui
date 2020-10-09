@@ -23,6 +23,7 @@ const LanguageSwitcher = ({ originalPath = '/' }) => {
         aria-controls="simple-menu"
         color="inherit"
         aria-haspopup="true"
+        onClick={handleClick}
       >
         <TranslateIcon />
       </IconButton>
