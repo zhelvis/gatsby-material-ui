@@ -1,10 +1,18 @@
 import React from 'react'
-import { LocalizedLink, useLocalization } from 'gatsby-theme-i18n'
-import { IconButton, Menu, MenuItem } from '@material-ui/core'
+/**
+ * Temporary load gatsby-theme-i18n fork,
+ * because original package incompatible with gatsby-plugin-mdx v4
+ *
+ * @see https://github.com/gatsbyjs/themes/issues/172
+ */
+import { useLocalization } from '@ericcote/gatsby-theme-i18n'
+import { IconButton, Menu, MenuItem } from '@mui/material'
 
-import TranslateIcon from '@material-ui/icons/Translate'
+import TranslateIcon from '@mui/icons-material/Translate'
 
-const LanguageSwitcher = ({ originalPath = '/' }) => {
+import { LocalizedLink } from './localizedLink'
+
+export const LanguageSwitcher = ({ originalPath = '/' }) => {
   const [anchorEl, setAnchorEl] = React.useState(null)
 
   const { locale: currentLocale, config } = useLocalization()
@@ -21,9 +29,10 @@ const LanguageSwitcher = ({ originalPath = '/' }) => {
     <div>
       <IconButton
         aria-controls="simple-menu"
-        color="inherit"
+        color="primary"
         aria-haspopup="true"
         onClick={handleClick}
+        size="large"
       >
         <TranslateIcon />
       </IconButton>
@@ -40,7 +49,6 @@ const LanguageSwitcher = ({ originalPath = '/' }) => {
               component={LocalizedLink}
               to={originalPath}
               language={locale.code}
-              disableRipple
               selected={currentLocale === locale.code}
             >
               {locale.localName}
@@ -51,5 +59,3 @@ const LanguageSwitcher = ({ originalPath = '/' }) => {
     </div>
   )
 }
-
-export default LanguageSwitcher

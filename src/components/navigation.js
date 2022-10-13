@@ -1,44 +1,35 @@
 import React from 'react'
-import { LocalizedLink } from 'gatsby-theme-i18n'
+
 import { useTranslation } from 'react-i18next'
-import { List, ListItem, ListItemText, makeStyles } from '@material-ui/core'
+import { List, ListItemButton } from '@mui/material'
 
-const useStyles = makeStyles((theme) => ({
-  navlink: {
-    '&[aria-current="page"]': {
-      backgroundColor: theme.palette.action.selected,
-    },
-  },
-}))
+import { LocalizedLink } from './localizedLink'
 
-const ListItemLink = ({ primary, to, ...props }) => {
-  const classes = useStyles()
-
-  return (
-    <li>
-      <ListItem
-        className={classes.navlink}
-        {...props}
-        button
-        disableRipple
-        component={LocalizedLink}
-        to={to}
-      >
-        <ListItemText primary={primary} />
-      </ListItem>
-    </li>
-  )
-}
-
-const NavList = () => {
+export const NavList = () => {
   const { t } = useTranslation('layout')
+
+  const links = [
+    { to: '/', title: t('blog') },
+    { to: '/second/', title: t('second') },
+  ]
   return (
     <List>
-      <ListItemLink to="/" primary={t('home')} />
-      <ListItemLink to="/page-2" primary={t('second')} />
-      <ListItemLink to="/mdx" primary="Mdx page" />
+      {links.map(({ to, title }, i) => (
+        <li key={i}>
+          <ListItemButton
+            sx={{
+              '&[aria-current="page"]': {
+                backgroundColor: 'action.selected',
+              },
+            }}
+            disableRipple
+            component={LocalizedLink}
+            to={to}
+          >
+            {title}
+          </ListItemButton>
+        </li>
+      ))}
     </List>
   )
 }
-
-export default NavList

@@ -1,21 +1,17 @@
 import React from 'react'
-import { Typography } from '@material-ui/core'
 import { graphql } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
-import Layout from '../components/layout'
-import SEO from '../components/seo'
 
-const BlogTemplate = ({ data, pageContext }) => {
+import { Seo } from '../components/seo'
+import { Layout } from '../components/layout'
+
+const BlogTemplate = ({ data, children, ...props }) => {
   return (
-    <Layout originalPath={pageContext.originalPath}>
-      <SEO
+    <Layout {...props}>
+      <Seo
         title={data.mdx.frontmatter.title}
         description={data.mdx.frontmatter.description}
       />
-      <Typography variant="h2">{data.mdx.frontmatter.title}</Typography>
-      <div>
-        <MDXRenderer>{data.mdx.body}</MDXRenderer>
-      </div>
+      <div>{children}</div>
     </Layout>
   )
 }
@@ -29,11 +25,9 @@ export const query = graphql`
       frontmatter: { slug: { eq: $slug } }
     ) {
       frontmatter {
-        slug
         title
         description
       }
-      body
     }
   }
 `

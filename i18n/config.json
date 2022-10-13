@@ -5,7 +5,7 @@
     "name": "English",
     "localName": "English",
     "langDir": "ltr",
-    "dateFormat": "MM/DD/YYYY"
+    "dateFormat": "MM/dd/yyyy"
   },
   {
     "code": "ru",
@@ -13,6 +13,6 @@
     "name": "Russian",
     "localName": "Русский",
     "langDir": "ltr",
-    "dateFormat": "DD.MM.YYYY"
+    "dateFormat": "dd.MM.yyyy"
   }
 ]

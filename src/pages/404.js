@@ -1,15 +1,20 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import { Typography, Link } from '@mui/material'
 
-import SEO from '../components/seo'
+import { LocalizedLink } from '../components/localizedLink'
+import { Seo } from '../components/seo'
 
 const NotFoundPage = () => {
   const { t } = useTranslation('404')
 
   return (
     <React.Fragment>
-      <SEO title={t('title')} description={t('description')} />
-      <h1>404</h1>
+      <Seo title={t('title')} description={t('description')} />
+      <Typography variant="h2">404</Typography>
+      <Link component={LocalizedLink} to="/">
+        {t('goToHome')}
+      </Link>
     </React.Fragment>
   )
 }

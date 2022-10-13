@@ -1,108 +1,67 @@
 import React from 'react'
-import {
-  makeStyles,
-  AppBar,
-  Toolbar,
-  IconButton,
-  Drawer,
-  Typography,
-  Hidden,
-} from '@material-ui/core'
+import { Toolbar, IconButton, Drawer, Box } from '@mui/material'
 
-import MenuIcon from '@material-ui/icons/Menu'
+import MenuIcon from '@mui/icons-material/Menu'
 
-import ThemeSwitcher from './themeSwitcher'
-import LanguageSwitcher from './languageSwitcher'
-import NavList from './navigation'
+import { ThemeSwitcher } from './themeSwitcher'
+import { LanguageSwitcher } from './languageSwitcher'
+import { DrawerContent } from './drawerContent'
 
 const drawerWidth = '18em'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-  },
-  title: {
-    flexGrow: 1,
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  drawerContainer: {
-    overflow: 'auto',
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-  },
-}))
-
-const Layout = ({ children, originalPath = '/' }) => {
-  const classes = useStyles()
-
+export const Layout = ({ children, pageContext: { originalPath } }) => {
   const [open, setOpen] = React.useState(false)
 
+  const handleDrawerToggle = () => {
+    setOpen(!open)
+  }
+
   return (
-    <div className={classes.root}>
-      <AppBar position="fixed" className={classes.appBar}>
+    <Box sx={{ display: 'flex' }}>
+      <Drawer
+        variant="temporary"
+        open={open}
+        onClose={handleDrawerToggle}
+        ModalProps={{
+          keepMounted: true, // Better open performance on mobile.
+        }}
+        sx={{
+          display: { xs: 'block', md: 'none' },
+          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+        }}
+      >
+        <DrawerContent />
+      </Drawer>
+      <Drawer
+        variant="permanent"
+        sx={{
+          display: { xs: 'none', md: 'block' },
+          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+        }}
+      >
+        <DrawerContent />
+      </Drawer>
+      <Box sx={{ flexGrow: 1 }}>
         <Toolbar>
-          <Hidden implementation="css" mdUp>
+          <Box sx={{ display: { xs: 'block', md: 'none' } }}>
             <IconButton
               edge="start"
-              color="inherit"
+              color="primary"
               aria-label="menu"
-              onClick={() => setOpen(!open)}
+              onClick={handleDrawerToggle}
+              size="large"
             >
               <MenuIcon />
             </IconButton>
-          </Hidden>
-          <Typography className={classes.title} variant="h6">
-            Gatsby MUI Starter
-          </Typography>
+          </Box>
+          <Box sx={{ flexGrow: 1 }} />
           <ThemeSwitcher />
           <LanguageSwitcher originalPath={originalPath} />
         </Toolbar>
-      </AppBar>
-      <Hidden implementation="css" smDown>
-        <Drawer
-          className={classes.drawer}
-          variant="permanent"
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-        >
-          <Toolbar />
-          <div className={classes.drawerContainer}>
-            <NavList />
-          </div>
-        </Drawer>
-      </Hidden>
-      <Hidden implementation="css" mdUp>
-        <Drawer
-          className={classes.drawer}
-          variant="temporary"
-          open={open}
-          onClose={() => setOpen(false)}
-          PaperProps={{ classes: { root: classes.drawerPaper } }}
-        >
-          <Toolbar />
-          <div className={classes.drawerContainer}>
-            <NavList />
-          </div>
-        </Drawer>
-      </Hidden>
-      <main className={classes.content}>
-        <Toolbar />
-        {children}
-      </main>
-    </div>
+        <Box component="main" sx={{ px: 3, ml: { md: drawerWidth } }}>
+          {children}
+        </Box>
+      </Box>
+    </Box>
   )
 }
-
-export default Layout

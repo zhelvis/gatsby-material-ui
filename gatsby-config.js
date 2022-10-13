@@ -4,7 +4,6 @@ module.exports = {
     siteUrl: 'http://example.com',
   },
   plugins: [
-    `gatsby-plugin-material-ui-dark-mode`,
     `gatsby-plugin-material-ui`,
     `gatsby-plugin-react-helmet`,
     {
@@ -21,24 +20,28 @@ module.exports = {
         name: `blog`,
       },
     },
+    /**
+     * Temporary load gatsby-theme-i18n and gatsby-theme-i18n-react-i18nex forks,
+     * because original packages incompatible with gatsby-plugin-mdx v4
+     *
+     * @see https://github.com/gatsbyjs/themes/issues/172
+     */
     {
-      resolve: `gatsby-theme-i18n`,
+      resolve: `@ericcote/gatsby-theme-i18n`,
       options: {
         defaultLang: `en`,
         configPath: require.resolve(`./i18n/config.json`),
       },
     },
     {
-      resolve: `gatsby-theme-i18n-react-i18next`,
+      resolve: `@ericcote/gatsby-theme-i18n-react-i18next`,
       options: {
         locales: `./i18n/react-i18next`,
         i18nextOptions: {
-          ns: ['index', 'layout', '404', 'page2'],
+          ns: ['index', 'layout', '404', 'second'],
         },
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -46,17 +49,16 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              quality: 100,
-              maxWidth: 768,
-              linkImagesToOriginal: false,
+              backgroundColor: 'transparent',
+              maxWidth: 1200,
             },
           },
         ],
-        defaultLayouts: {
-          default: require.resolve(`./src/components/layout.js`),
-        },
       },
     },
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

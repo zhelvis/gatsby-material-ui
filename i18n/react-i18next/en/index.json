@@ -1,6 +1,5 @@
 {
-  "title": "Main page",
-  "description": "Welcome to my website!",
-  "hello": "Hello!",
-  "link": "Second page"
+  "title": "Blog",
+  "description": "Demo blog powered by Gatsby, MUI and React-i18n next",
+  "readMore": "Read more"
 }

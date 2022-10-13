@@ -1,28 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { LocalizedLink } from 'gatsby-theme-i18n'
-import { AppBar, Toolbar, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+/**
+ * Temporary load gatsby-theme-i18n fork,
+ * because original package incompatible with gatsby-plugin-mdx v4
+ *
+ * @see https://github.com/gatsbyjs/themes/issues/172
+ */
+import { LocalizedLink } from '@ericcote/gatsby-theme-i18n'
+import { AppBar, Toolbar, Typography, Box } from '@mui/material'
 
 import ThemeSwitcher from './themeSwitcher'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  title: {
-    marginRight: theme.spacing(2),
-    flexGrow: 1,
-  },
-}))
-
 const Header = ({ path }) => {
-  const classes = useStyles()
   return (
-    <div className={classes.root}>
+    <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+          <Typography
+            variant="h6"
+            sx={{
+              marginRight: theme.spacing(2),
+              flexGrow: 1,
+            }}
+          >
             Gatsby MUI starter
           </Typography>
           <LocalizedLink to={path} language="ru">
@@ -34,7 +34,7 @@ const Header = ({ path }) => {
           <ThemeSwitcher />
         </Toolbar>
       </AppBar>
-    </div>
+    </Box>
   )
 }
 
