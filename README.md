@@ -2,12 +2,15 @@
 
 SEO-optimized react app powered by Gatsby v4, Material UI v5 and react-i18n-next
 
+[🚀DEMO](https://sensational-paprenjak-625346.netlify.app)
+
 ## feachers
+
 - Dark theme support based on css vars
 - MDX support
 - Seo-friendly i18n
 
-## Notes 
+## Notes
 
 ### Forked i18n gatsby packages
 
@@ -20,4 +23,3 @@ Pakages will be replaced by original after fix.
 ### Material UI Experimental Css vars support
 
 Theming implemented with MUI `Experimental_CssVarsProvider`, for solving FOUC problem.
-
