@@ -1,8 +1,23 @@
 # Gatsby-mui-starter starter template
 
-## feachers
+SEO-optimized react app powered by Gatsby v4, Material UI v5 and react-i18n-next
 
-- material-ui v4
-- i18n
-- jss isomorphic styling
-- dark mode support
+## feachers
+- Dark theme support based on css vars
+- MDX support
+- Seo-friendly i18n
+
+## Notes 
+
+### Forked i18n gatsby themes 
+
+This starter use `@ericcote/gatsby-theme-i18n` and `@ericcote/gatsby-theme-i18n-react-i18next` compatible with new `gatsby-plugin-mdx` v4
+
+see: https://github.com/gatsbyjs/themes/issues/172
+
+Theme will be replaced after fix
+
+### Material UI Experimental Css vars support
+
+THeming implemted with MUI `Experimental_CssVarsProvider`, for solving FOUC problem.
+
